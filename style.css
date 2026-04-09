@@ -1,0 +1,84 @@
+body { width: 320px; padding: 15px; font-family: 'Segoe UI', sans-serif; margin: 0; }
+.container { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+#dog-container { position: relative; width: 200px; height: 210px; }
+
+/* Плавное моргание */
+#eye-lid-l, #eye-lid-r {
+    transition: height 0.1s ease-in-out;
+}
+
+/* Анимация хвоста */
+@keyframes tailWag {
+    from { transform: rotate(-10deg); }
+    to { transform: rotate(15deg); }
+}
+
+#dog-tail {
+    animation: tailWag 0.4s infinite alternate ease-in-out;
+}
+
+/* Частицы */
+.floating-emoji {
+    position: absolute;
+    top: 50%; left: 50%;
+    font-size: 24px;
+    pointer-events: none;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4); opacity: 0; }
+}
+
+/* поедание */
+@keyframes eat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+  60% { transform: translateY(0); }
+}
+
+@keyframes sad {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shake {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0); }
+}
+
+/* Шкалы */
+.bars { width: 100%; }
+.bar-wrap { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.bar { flex: 1; height: 10px; background: #eee; border-radius: 5px; overflow: hidden; }
+.fill { height: 100%; transition: width 0.3s ease; }
+
+#bar-hunger { background: #ff4d4d; }
+#bar-happy { background: #ffbd33; }
+#bar-clean { background: #33ccff; }
+
+/* Кнопки и магазин */
+.actions { display: flex; gap: 8px; }
+.btn { padding: 8px 14px; border: none; border-radius: 6px; background: #3b82f6; color: #fff; cursor: pointer; font-weight: bold; }
+.btn.secondary { background: #64748b; }
+
+.shop-panel { display: none; width: 100%; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
+.shop-panel.active { display: block; }
+.shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.shop-item { padding: 8px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; text-align: center; background: #fff; font-size: 12px; }
+.shop-item.locked { opacity: 0.5; filter: grayscale(1); }
+.shop-item.selected { border-color: #3b82f6; background: #eef2ff; }
+
+.studying-aura { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7)); }
