@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="stat-item">💰 <span id="coin-count">0</span></div>
+            <div class="stat-item">🍗 <span id="food-stock">0</span></div>
+        </div>
+
+        <div id="dog-container"></div>
+        <div id="status-text">Гав!</div>
+
+        <div class="bars">
+            <div class="bar-wrap"><span>🍗</span><div class="bar"><div id="bar-hunger" class="fill"></div></div></div>
+            <div class="bar-wrap"><span>💖</span><div class="bar"><div id="bar-happy" class="fill"></div></div></div>
+            <div class="bar-wrap"><span>🧼</span><div class="bar"><div id="bar-clean" class="fill"></div></div></div>
+        </div>
+
+        <div class="actions">
+            <button id="feed-act" class="btn">Покормить</button>
+            <button id="wash-act" class="btn">Помыть</button>
+            <button id="shop-toggle" class="btn secondary">Магазин</button>
+        </div>
+
+        <div id="shop-menu" class="shop-panel">
+            <h3>Магазин</h3>
+            <div class="shop-grid">
+                <div id="buy-food-btn" class="shop-item">🍗 Еда (10)</div>
+                <div id="btn-hat" class="shop-item locked">🎩 Шляпа (30)</div>
+                <div id="btn-glasses" class="shop-item locked">🕶️ Очки (30)</div>
+                <div id="btn-tie" class="shop-item locked">🎀 Галстук (30)</div>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
