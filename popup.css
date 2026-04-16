@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Полное удаление белых рамок и теней */
+*,
+*::before,
+*::after {
+  border-color: transparent !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+html, body, .main-container, .pet-display, .tabs-system, .shop-item-card, button, .action-btn, .buy-btn {
+  box-shadow: none !important;
+}
+
+/* Убираем белую рамку у кнопок при фокусе/активности */
+button:focus, button:active, .buy-btn:focus, .action-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Если есть белая полоса по краям из-за скролла */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Главный контейнер корпуса */
+.main-container {
+  background: #c5c5c5;
+  border-radius: 20px;
+  /* Внутренние тени для объема корпуса */
+  box-shadow: inset -4px -4px 0px #888, inset 4px 4px 0px #fff;
+  /* ВАЖНО: Убираем любые внешние тени, которые создают белую дымку */
+  box-shadow: inset -4px -4px 0px #888, inset 4px 4px 0px #fff !important;
+  
+  width: 320px; /* Фиксируем ширину, чтобы не распирало */
+  padding: 15px;
+  margin: 5px; /* Небольшой отступ, чтобы закругления были видны */
+  box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+}
+
+/* ШКАЛЫ ИЗ СКРИНШОТА */
+.bars-container-visual { display: flex; gap: 8px; margin-bottom: 12px; }
+.stat-block { flex: 1; display: flex; flex-direction: column; }
+.stat-header { display: flex; align-items: center; gap: 4px; font-size: 14px; margin-bottom: 2px; }
+.pixel-bar-bg { height: 12px; background: #555; border: 2px solid #000; overflow: hidden; position: relative; }
+.pixel-bar-fill { height: 100%; border-right: 2px solid #000; transition: width 0.3s; }
+.food { background: #f1c40f; } .clean { background: #3498db; } .happy { background: #e74c3c; }
+
+/* ТАБЫ */
+.tabs-system { background: #aaa; border: 2px solid #000; border-radius: 12px; overflow: hidden; }
+.tabs-header { display: flex; background: #888; border-bottom: 2px solid #000; }
+.tab-btn { flex: 1; padding: 8px; border: none; background: transparent; cursor: pointer; font-family: inherit; color: #fff; border-right: 1px solid #000; }
+.tab-btn.active { background: #aaa; color: #000; font-weight: bold; }
+.tabs-body { padding: 10px; min-height: 110px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* МАГАЗИН (3 КОЛОНКИ) */
+.shop-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.shop-item-card { 
+  background: #9cae9f; border: 2px solid #000; border-radius: 8px; padding: 5px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.item-icon-box { font-size: 24px; margin-bottom: 2px; }
+.item-name { font-size: 12px; font-weight: bold; line-height: 1; margin-bottom: 2px; }
+.item-price {
+  color: #ffcc00; /* Золотистый цвет цифр */
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  
+  /* ЧЕРНАЯ ОБВОДКА (создаем контур со всех сторон) */
+  text-shadow: 
+    1px 1px 0 #000, 
+   -1px -1px 0 #000, 
+    1px -1px 0 #000, 
+   -1px 1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    1px 0px 0 #000,
+   -1px 0px 0 #000;
+}
+
+/* Если ты используешь псевдоэлемент для значка монетки перед ценой */
+.item-price::before {
+  content: "💰";
+  font-size: 10px;
+  text-shadow: none; /* Убираем обводку с эмодзи, чтобы не двоилось */
+}
+.item-price::before { content: "💰"; font-size: 10px; }
+
+.buy-btn { 
+  background: #2ecc71; border: 1px solid #000; color: white; width: 100%;
+  font-family: inherit; font-size: 11px; cursor: pointer; border-radius: 4px;
+}
+
+/* УЧЕБА */
+.study-controls { display: flex; gap: 5px; margin-bottom: 8px; }
+#site-input { flex: 1; border: 2px solid #000; border-radius: 4px; padding: 2px 5px; font-family: inherit; }
+#btn-add-site { background: #3498db; color: white; border: 2px solid #000; cursor: pointer; font-family: inherit; border-radius: 4px; }
+
+#whitelist { 
+  background: #999; border: 2px solid #000; border-radius: 6px; 
+  max-height: 70px; overflow-y: auto; padding: 0; margin: 0; list-style: none;
+}
+.whitelist-item { 
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 3px 8px; border-bottom: 1px solid #777; font-size: 14px;
+}
+.delete-btn { background: none; border: none; color: #c7290c; cursor: pointer; font-weight: bold; font-size: 16px; }
+
+/* ДЕЙСТВИЯ */
+.action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.food-selector { grid-column: 1 / 3; display: flex; gap: 5px; }
+#food-select { flex: 1; border: 2px solid #000; border-radius: 4px; font-family: inherit; }
+.action-btn { border: 2px solid #000; border-radius: 6px; padding: 6px; cursor: pointer; font-family: inherit; font-weight: bold; }
+.eat { background: #e74c3c; color: white; }
+.wash { background: #3498db; color: white; }
+.pet { background: #f1c40f; }
+
+.header-status {
+  display: flex;
+  justify-content: space-between; /* Кнопка влево, монеты вправо */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 5px; /* Небольшой отступ от краев */
+  box-sizing: border-box;
+}
+
+.coins-container {
+  color: #fff; /* Белый цвет текста */
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  font-family: 'VT323', monospace; /* Пиксельный шрифт */
+  
+  /* Эффект многослойного золотого свечения */
+  text-shadow: 
+    0 0 5px #ffcc00,    /* Ближнее свечение */
+    0 0 10px #ffcc00,   /* Дальнее свечение */
+    1px 1px 0px #000,   /* Тонкая черная тень для четкости */
+    -1px -1px 0px #000, 
+    1px -1px 0px #000, 
+    -1px 1px 0px #000;
+  
+  z-index: 100;
+}
+
+/* Опционально: можно добавить легкую анимацию пульсации монеток */
+@keyframes coin-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.coins-container span#coin-count {
+  display: inline-block;
+  /* Раскомментируй строку ниже, если хочешь, чтобы цифры пульсировали */
+  /* animation: coin-pulse 2s infinite ease-in-out; */
+}
+
+/* Кнопка в верхнем левом углу для симметрии */
+#btn-side-panel {
+  background: #999;
+  border: 2px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 6px;
+}
+.emoji-icon {
+  filter: drop-shadow(1px 1px 0px #000); /* Добавляет четкий контур смайлику */
+  font-size: 22px;
+}
+/* Основной контейнер для отображения питомца */
+/* Исправляем ЖК-дисплей, чтобы он не выходил за рамки */
+.pet-display {
+  box-sizing: border-box; /* Рамка 4px теперь считается ВНУТРИ высоты 140px */
+  overflow: hidden;       /* Обрезает всё, что выходит за края */
+  height: 140px;
+  border: 4px solid #3e4942;
+  position: relative;
+}
+.studying-glow {
+  border-color: #F0E68C !important;
+  box-shadow: 0 0 20px #F0E68C, inset 0 0 15px #EEE8AA;
+}
+.coins-display-box {
+  position: absolute;
+  top: 8px; /* Отступ сверху */
+  right: 12px; /* Отступ справа */
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+  /* Пиксельное золотое свечение */
+  text-shadow: 
+    1px 1px 0px #000, 
+   -1px -1px 0px #000, 
+    1px -1px 0px #000, 
+   -1px 1px 0px #000,
+    0px 0px 5px #ffcc00;
+  
+  z-index: 100; /* Поверх собаки */
+}
+.not-studying-glow {
+  border-color: #4682B4 !important;
+  box-shadow: 0 0 15px #4682B4, inset 0 0 20px #5F9EA0;
+  filter: brightness(0.5);
+}
+/* Сама собака */
+#pet-sprite {
+  width: 100px;
+  height: 100px;
+  background-image: url('sprite.jpg'); /* Убедись, что файл рядом с popup.html */
+  background-size: 400px 400px; /* Размер всей сетки 4х4 */
+  image-rendering: pixelated; /* Чтобы не было размытия */
+  display: block !important; /* Гарантируем видимость */
+}
+
+/* АНИМАЦИИ (без них собака может быть просто белым квадратом) */
+@keyframes playSprite {
+  from { background-position-x: 0px; }
+  to { background-position-x: -400px; }
+}
+
+.anim-idle { background-position-y: 0px; animation: playSprite 1s steps(4) infinite; }
+.anim-eat  { background-position-y: -100px; animation: playSprite 0.8s steps(4) infinite; }
+.anim-wash { background-position-y: -200px; animation: playSprite 0.8s steps(4) infinite; }
+.anim-pet  { background-position-y: -300px; animation: playSprite 0.8s steps(4) infinite; }
+
+/* Контейнер для частиц (внутри pet-display) */
+/* --- СТИЛИ ДЛЯ РАЗЛЕТАЮЩИХСЯ ЧАСТИЦ (ЭФФЕКТОВ) --- */
+
+/* Контейнер для частиц (внутри pet-display) */
+#particles-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; /* Чтобы не мешали кликать по собаке */
+  overflow: hidden;
+  z-index: 10; /* Поверх собаки, но под шкалами */
+}
+
+/* Сама частица (эмодзи) */
+.particle {
+  position: absolute;
+  font-size: 24px; /* Размер эмодзи */
+  user-select: none;
+  image-rendering: pixelated; /* Для четкости, если это кастомные спрайты */
+  
+  /* Запускаем анимацию разлета */
+  animation: flyParticle 1s ease-out forwards;
+  
+  /* Начальная позиция (центр) */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Центрируем относительно точки спавна */
+}
+
+/* Анимация разлета (используем CSS-переменные из JS) */
+@keyframes flyParticle {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1; /* Быстро появляемся */
+    scale: (1.2); /* Чуть увеличиваемся для эффекта "взрыва" */
+  }
+  100% {
+    /* Разлетаемся в координаты, заданные в JS, уменьшаемся и исчезаем */
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Убираем свечение и специфическую рамку у эффектов */
+.effect-card { 
+  border: 2px solid #000; /* Стандартная черная рамка */
+  background: #9cae9f;    /* Тот же фон, что у еды */
+  box-shadow: none;       /* Убираем свечение */
+}
+
+/* Состояние купленной кнопки */
+.buy-btn:disabled {
+  background-color: #7f8c8d;
+  cursor: default;
+  opacity: 0.8;
+}
+/* --- ШАПКА (Название расширения) --- */
+.header-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  position: relative; /* Чтобы кнопка слева не мешала заголовку */
+}
+
+#btn-side-panel {
+  background: #999;
+  border: 2px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 6px;
+  position: absolute;
+  left: 15px; /* Кнопка прижата влево */
+}
+
+.extension-title-main {
+  font-size: 26px; /* Большой пиксельный заголовок */
+  font-weight: bold;
+  color: #000;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+/* --- ЖК ДИСПЛЕЙ --- */
+.pet-display {
+  background: #7d8f81;
+  border: 4px solid #3e4942;
+  height: 140px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Для монет */
+  overflow: hidden;
+  margin-bottom: 10px;
+  transition: all 0.5s ease;
+}

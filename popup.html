@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="pixel-font">
+  <div class="main-container">
+    <div class="header-status">
+        <div class="extension-title-main">Shiba-Kun Study Pro</div>
+    </div>
+   <div class="pet-display">
+    <div class="coins-display-box">💰 <span id="coin-count">0</span></div>
+  <div id="pet-sprite" class="anim-idle"></div>
+  <div id="particles-container"></div>
+</div>
+
+    <div class="bars-container-visual">
+      <div class="stat-block">
+        <div class="stat-header"><span>🍔</span><span class="stat-name">Еда</span></div>
+        <div class="pixel-bar-bg"><div id="visual-bar-food" class="pixel-bar-fill food" style="width: 100%;"></div></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-header"><span>🛁</span><span class="stat-name">Чистота</span></div>
+        <div class="pixel-bar-bg"><div id="visual-bar-clean" class="pixel-bar-fill clean" style="width: 100%;"></div></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-header"><span>❤️</span><span class="stat-name">Радость</span></div>
+        <div class="pixel-bar-bg"><div id="visual-bar-happy" class="pixel-bar-fill happy" style="width: 100%;"></div></div>
+      </div>
+    </div>
+
+    <div class="tabs-system">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="actions">ДЕЙСТВИЯ</button>
+        <button class="tab-btn" data-tab="shop">МАГАЗИН</button>
+        <button class="tab-btn" data-tab="study">УЧЕБА</button>
+      </div>
+
+      <div class="tabs-body">
+        <div id="actions" class="tab-content active">
+          <div class="action-grid">
+            <div class="food-selector">
+              <select id="food-select"><option value="none">Инвентарь пуст</option></select>
+              <button id="btn-feed" class="action-btn eat">ЕДА</button>
+            </div>
+            <button id="btn-wash" class="action-btn wash">ПОМЫТЬ</button>
+            <button id="btn-pet" class="action-btn pet">ИГРАТЬ</button>
+          </div>
+        </div>
+
+        <div id="shop" class="tab-content">
+            <div class="shop-grid-new">
+                <div class="shop-item-card">
+                <div class="item-icon-box">🍪</div>
+                <span class="item-name">Печенье</span>
+                <span class="item-price">10</span>
+                <button class="buy-btn" data-item="cookie" data-price="10">BUY</button>
+                </div>
+                <div class="shop-item-card">
+                <div class="item-icon-box">🦴</div>
+                <span class="item-name">Кость</span>
+                <span class="item-price">20</span>
+                <button class="buy-btn" data-item="bone" data-price="20">BUY</button>
+                </div>
+                <div class="shop-item-card effect-card">
+  <div class="item-icon-box">✨🧼</div>
+  <span class="item-name">Эффект 1</span>
+  <span class="item-price">150</span>
+  <button class="buy-btn effect" data-item="eff_wash" data-price="150">BUY</button>
+</div>
+
+<div class="shop-item-card effect-card">
+  <div class="item-icon-box">✨🍗</div>
+  <span class="item-name">Эффект 2</span>
+  <span class="item-price">150</span>
+  <button class="buy-btn effect" data-item="eff_eat" data-price="150">BUY</button>
+</div>
+
+<div class="shop-item-card effect-card">
+  <div class="item-icon-box">✨❤️</div>
+  <span class="item-name">Эффект 3</span>
+  <span class="item-price">150</span>
+  <button class="buy-btn effect" data-item="eff_pet" data-price="150">BUY</button>
+</div>
+            </div>
+        </div>
+
+        <div id="study" class="tab-content">
+  <div class="study-controls" style="display: flex; flex-direction: column; gap: 5px;">
+    <input type="text" id="site-input" placeholder="google.com">
+    <div style="display: flex; gap: 5px;">
+      <button id="btn-add-site">Добавить</button>
+      <button id="btn-add-current" style="background: #4ade80; color: #000;">Этот сайт</button>
+    </div>
+  </div>
+  <ul id="whitelist" class="pixel-scroll"></ul>
+</div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
